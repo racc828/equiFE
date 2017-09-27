@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 import '../css/userEnter.css';
 
 export default class Login extends React.Component {
@@ -32,6 +33,7 @@ export default class Login extends React.Component {
           <input onChange={this.handleChange} name="username" type="text" placeholder="Username"/>
           <input onChange={this.handleChange} name="password" type="password" placeholder="Password"/>
           <button type="submit">Login</button>
+          <Link to="/signup">Create Account</Link>
         </form>
       </div>
     )

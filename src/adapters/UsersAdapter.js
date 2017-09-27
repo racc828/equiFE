@@ -12,14 +12,6 @@ export default class UsersAdapter {
     localStorage.setItem('token', user.jwt)
   }
 
-  static getUsers() {
-    return fetch(path, {
-      method: 'get',
-      headers: headers()
-    })
-    .then( resp => resp.json())
-  }
-
 }
 
 let headers = () => {

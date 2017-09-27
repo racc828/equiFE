@@ -4,6 +4,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import UserHome from './components/UserHome';
 import SessionsAdapter from './adapters/SessionsAdapter';
+import UsersAdapter from './adapters/UsersAdapter';
 import './App.css';
 import PropTypes from 'prop-types'
 
@@ -16,28 +17,27 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      currentUser: {},
       error:false
     }
   }
-
-  componentDidMount(){
-    SessionsAdapter.currentUser()
-      .then( data => {
-        this.setState({
-          currentUser: data
-        })
-      })
-    }
 
   getUser = (user) => {
     return SessionsAdapter.getUser(user)
     .then( userData => {
       localStorage.setItem('token', userData.jwt)
-      this.setState({currentUser: userData })
     })
     .then(() => {
-      this.state.currentUser.error ? this.setState({error: true}) : this.context.router.history.push("/userhome");
+     this.context.router.history.push("/userhome");
+    })
+  }
+
+  createUser = (user) => {
+    return UsersAdapter.createUser(user)
+    .then( userData => {
+      localStorage.setItem('token', userData.jwt)
+    })
+    .then(() => {
+      this.context.router.history.push("/userhome")
     })
   }
 
@@ -49,7 +49,7 @@ class App extends Component {
 
   renderSignUp = () => {
     return (
-      <SignUp />
+      <SignUp createUser={this.createUser} />
     )
   }
 
