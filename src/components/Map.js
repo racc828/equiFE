@@ -8,7 +8,7 @@ const Map = withGoogleMap((props) =>
     defaultZoom={8}
     defaultCenter={{ lat: props.search.midpoint.latitude, lng: props.search.midpoint.longitude }}
   >
-    {props.isMarkerShown && <Marker position={{ lat: props.search.midpoint.latitude, lng: props.search.midpoint.longitude }} />}
+      {props.isMarkerShown && <Marker position={{ lat: props.search.midpoint.latitude, lng: props.search.midpoint.longitude }} />}
   </GoogleMap>
 )
 
