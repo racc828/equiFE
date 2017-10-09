@@ -9,6 +9,7 @@ import UsersAdapter from './adapters/UsersAdapter';
 import './App.css';
 import PropTypes from 'prop-types'
 import NavBar from './components/NavBar'
+import Map from './components/Map'
 
 class App extends Component {
 
@@ -63,9 +64,10 @@ class App extends Component {
 
   renderHome = () => {
     return (
-      <Home />
+      <Home renderMap={this.renderMap} />
     )
   }
+
 
   renderUserHome = () => {
     return (

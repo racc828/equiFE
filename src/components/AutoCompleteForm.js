@@ -2,7 +2,7 @@ import React from 'react'
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 import {getCenter} from 'geolib'
 import AutoCompleteInput from './AutoCompleteInput'
-import SearchesAdapter from '../adapters/SearchesAdapter'
+
 
 class AutoCompleteForm extends React.Component {
   constructor() {
@@ -10,9 +10,7 @@ class AutoCompleteForm extends React.Component {
     this.state = {
       address1: "",
       address2: "",
-      address3: "",
-      addressesArray: [],
-      center:[]
+      address3: ""
     }
   }
 
@@ -24,16 +22,10 @@ class AutoCompleteForm extends React.Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault()
-    SearchesAdapter.makeSearch(this.state)
-    .then(addresses => {
-     let addressArray = addresses.map((addressArr) => {
-        return {"lat": addressArr.latitude, "lng": addressArr.longitude}
-      })
-     let midpoint = getCenter(addressArray)
-     this.setState({
-       center: midpoint,
-       addressesArray: addressArray
-     })
+    let search = this.state
+    this.props.makeSearch(search)
+    .then(() => {
+      this.props.initiateSearch()
     })
   }
 
