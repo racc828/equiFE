@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link } from "react-router-dom";
-import '../css/userEnter.css';
+import '../css/mainHome.css';
 
 export default class Login extends React.Component {
   constructor() {
@@ -29,12 +28,16 @@ export default class Login extends React.Component {
   render() {
     return(
       <div id="login-page">
-        <form id="user-login" className="userenter" onSubmit={this.handleSubmit}>
-          <input onChange={this.handleChange} name="username" type="text" placeholder="Username"/>
-          <input onChange={this.handleChange} name="password" type="password" placeholder="Password"/>
-          <button type="submit">Login</button>
-          <Link to="/signup">Create Account</Link>
-        </form>
+        <div className="enter-site">
+          <div className="enter-site-inner">
+            <form id="user-login" onSubmit={this.handleSubmit}>
+              <h1 className="text-primary">Login</h1>
+              <input onChange={this.handleChange} name="username" type="text" placeholder="Username"/>
+              <input onChange={this.handleChange} name="password" type="password" placeholder="Password"/>
+              <button type="submit">Login</button>
+            </form>
+          </div>
+        </div>
       </div>
     )
   }

@@ -1,28 +1,24 @@
-.App {
-  text-align: center;
+body {
+  text-align:center;
+  background:#1279be url("https://images.unsplash.com/photo-1495420047114-9f6ef7fc0cbc?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1000&amp;q=80&amp;cs=tinysrgb&amp;crop=") no-repeat;
+  background-attachment: fixed;
+  background-size:cover;
+  font-family:'Lato';
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+h1, h2, h3, h4, h5, h6 {
+  font-family:'Raleway';
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+input {
+  display:block;
+  margin:auto;
 }
 
-.App-title {
-  font-size: 1.5em;
+.text-primary {
+  color:#26a69a;
 }
 
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.text-grey {
+  color:#6b6c6d;
 }

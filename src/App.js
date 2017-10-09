@@ -3,10 +3,12 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import UserHome from './components/UserHome';
+import Home from './components/Home';
 import SessionsAdapter from './adapters/SessionsAdapter';
 import UsersAdapter from './adapters/UsersAdapter';
 import './App.css';
 import PropTypes from 'prop-types'
+import NavBar from './components/NavBar'
 
 class App extends Component {
 
@@ -59,18 +61,28 @@ class App extends Component {
     )
   }
 
+  renderHome = () => {
+    return (
+      <Home />
+    )
+  }
+
   renderUserHome = () => {
     return (
       <UserHome currentUser={this.state.currentUser} logOut={this.logOut} />
     )
   }
 
+  // API KEY: AIzaSyDgoHVOnLjaoJzwnWUmCCiAwk7Q-SYjqV0
+
   render() {
     return (
       <div className="App">
         <div className="navigation">
           <div>
-              <Route exact path="/" render={this.renderLogin}/>
+              <NavBar />
+              <Route exact path="/" render={this.renderHome}/>
+              <Route exact path="/login" render={this.renderLogin}/>
               <Route exact path="/signup" render={this.renderSignUp}/>
               <Route exact path="/userhome" render={this.renderUserHome}/>
           </div>

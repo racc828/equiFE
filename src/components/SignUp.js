@@ -1,5 +1,5 @@
 import React from 'react'
-import '../css/userEnter.css';
+import '../css/mainHome.css';
 
 export default class SignUp extends React.Component {
   constructor() {
@@ -30,14 +30,19 @@ export default class SignUp extends React.Component {
   render() {
     return(
       <div id="signup-page">
-        <form id="signin-login" className="userenter" onSubmit={this.handleSubmit}>
-          <input onChange={this.handleChange} name="firstname" type="text" placeholder="First Name"/>
-          <input onChange={this.handleChange} name="lastname" type="text" placeholder="Last Name"/>
-          <input onChange={this.handleChange} name="email" type="email" placeholder="Email"/>
-          <input onChange={this.handleChange} name="username" type="text" placeholder="Username"/>
-          <input onChange={this.handleChange} name="password" type="password" placeholder="Password"/>
-          <button type="submit">Sign Up</button>
-        </form>
+        <div className="enter-site">
+          <div className="enter-site-inner">
+            <form id="signin-login" onSubmit={this.handleSubmit}>
+              <h1 className="text-primary">Sign Up</h1>
+              <input onChange={this.handleChange} name="firstname" type="text" placeholder="First Name"/>
+              <input onChange={this.handleChange} name="lastname" type="text" placeholder="Last Name"/>
+              <input onChange={this.handleChange} name="email" type="email" placeholder="Email"/>
+              <input onChange={this.handleChange} name="username" type="text" placeholder="Username"/>
+              <input onChange={this.handleChange} name="password" type="password" placeholder="Password"/>
+              <button type="submit">Sign Up</button>
+            </form>
+          </div>
+        </div>
       </div>
     )
   }

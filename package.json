@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "geolib": "^2.0.23",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-scripts": "1.0.14",
-    "react-router-dom": "^4.2.2"
+    "react-google-map": "^3.0.1",
+    "react-google-maps": "^8.3.0",
+    "react-places-autocomplete": "^5.4.3",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.14"
   },
   "scripts": {
     "start": "react-scripts start",

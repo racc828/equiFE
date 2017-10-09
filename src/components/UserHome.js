@@ -20,10 +20,7 @@ export default class UserHome extends React.Component {
       })
     }
 
-  
-
   render() {
-    debugger
     return(
       <div id="user-home-page">
         <p>Welcome {this.state.currentUser.firstname} </p>
