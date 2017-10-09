@@ -11,7 +11,7 @@ class AutoCompleteInput extends React.Component {
 
   handleChange = (address) => {
     let key = this.props.address
-    this.props.newState(key, address)
+    this.props.handleAddresses(key, address)
     this.setState({
       address
     })

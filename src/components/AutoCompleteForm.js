@@ -1,7 +1,8 @@
 import React from 'react'
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
-import {geoLib, getCenter} from 'geolib'
+import {getCenter} from 'geolib'
 import AutoCompleteInput from './AutoCompleteInput'
+import SearchesAdapter from '../adapters/SearchesAdapter'
 
 class AutoCompleteForm extends React.Component {
   constructor() {
@@ -10,46 +11,37 @@ class AutoCompleteForm extends React.Component {
       address1: "",
       address2: "",
       address3: "",
-      coordinates: [],
-      center: []
+      addressesArray: [],
+      center:[]
     }
   }
 
-  newState = (key, address) => {
+  handleAddresses = (key, address) => {
     this.setState({
       [key]: address
     })
   }
 
-  calculateMidpoint = (locations) => {
-    geoLib.getCenter(locations)
-    .then(() => {
-      debugger
-    })
-  }
-
   handleFormSubmit = (event) => {
     event.preventDefault()
-    let locationsArray = [this.state.address1, this.state.address2, this.state.address3]
-    locationsArray.map((address, i) => {
-      geocodeByAddress(address)
-      .then(results => getLatLng(results[0]))
-      .then(coords => this.setState({
-        coordinates: [...this.state.coordinates, coords]
-       }))
-       .then(() => {
-         this.calculateMidpoint(this.state.coordinates)
-       })
+    SearchesAdapter.makeSearch(this.state)
+    .then(addresses => {
+     let addressArray = addresses.map((addressArr) => {
+        return {"lat": addressArr.latitude, "lng": addressArr.longitude}
+      })
+     let midpoint = getCenter(addressArray)
+     this.setState({
+       center: midpoint,
+       addressesArray: addressArray
+     })
     })
   }
-
-
 
   render() {
     return (
       <form onSubmit={this.handleFormSubmit}>
         {["address1", "address2", "address3"].map((address, i) => {
-          return <AutoCompleteInput key={i} address={address} newState={this.newState} />
+          return <AutoCompleteInput key={i} address={address} handleAddresses={this.handleAddresses} />
         })}
         <button type="submit">Submit </button>
       </form>
