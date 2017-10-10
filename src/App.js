@@ -20,7 +20,8 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      currentUser: {}
+      currentUser: {},
+      error:false
     }
   }
 
@@ -33,8 +34,12 @@ class App extends Component {
       localStorage.setItem('token', userData.jwt)
     })
     .then(() => {
-     this.context.router.history.push("/userhome");
-    })
+        this.state.currentUser.error ? this.setState({error: true}) : this.context.router.history.push("/userhome");
+      })
+  }
+
+  resetError = () => {
+    this.setState({error:false})
   }
 
   createUser = (user) => {
@@ -64,7 +69,10 @@ class App extends Component {
 
   renderLogin = () => {
     return (
-      <Login getUser={this.getUser} />
+      <div>
+        <Login resetError={this.resetError} getUser={this.getUser} />
+        {this.state.error ? <span className="error"><small>Invalid Login Credentials</small> </span> : null}
+      </div>
     )
   }
 

@@ -15,6 +15,17 @@ input {
   margin:auto;
 }
 
+.error {
+  position:absolute;
+  bottom:50%;
+  left:0;
+  right:0;
+  margin:auto;
+  font-size:3rem;
+  color:red;
+  font-weight:bold;
+}
+
 .text-primary {
   color:#26a69a;
 }
