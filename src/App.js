@@ -20,13 +20,16 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      error:false
+      currentUser: {}
     }
   }
 
   getUser = (user) => {
     return SessionsAdapter.getUser(user)
     .then( userData => {
+      this.setState({
+        currentUser: userData
+      })
       localStorage.setItem('token', userData.jwt)
     })
     .then(() => {
@@ -37,6 +40,9 @@ class App extends Component {
   createUser = (user) => {
     return UsersAdapter.createUser(user)
     .then( userData => {
+      this.setState({
+        currentUser: userData
+      })
       localStorage.setItem('token', userData.jwt)
     })
     .then(() => {
@@ -71,7 +77,7 @@ class App extends Component {
 
   renderUserHome = () => {
     return (
-      <UserHome currentUser={this.state.currentUser} logOut={this.logOut} />
+      <UserHome currentUser={this.state.currentUser} />
     )
   }
 
@@ -82,7 +88,8 @@ class App extends Component {
       <div className="App">
         <div className="navigation">
           <div>
-              <NavBar />
+              <NavBar currentUser={this.state.currentUser}
+              logOut={this.logOut} />
               <Route exact path="/" render={this.renderHome}/>
               <Route exact path="/login" render={this.renderLogin}/>
               <Route exact path="/signup" render={this.renderSignUp}/>

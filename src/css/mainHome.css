@@ -28,5 +28,5 @@
 }
 
 #PlacesAutocomplete__autocomplete-container {
-  z-index:90000;
+  z-index:1;
 }
