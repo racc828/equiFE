@@ -67,7 +67,7 @@ export default class UserHome extends React.Component {
           <p>Welcome {this.props.currentUser.firstname} </p>
             {this.state.initiateSearch ?
               <div>
-                <VenuesInfo venues={this.state.venues} />
+                <VenuesInfo venues={this.state.venues} currentUser={this.props.currentUser}  />
                 <Map
                 googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
                 loadingElement={<div style={{ height: `100%` }} />}

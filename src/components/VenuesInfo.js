@@ -5,7 +5,7 @@ const VenuesInfo = (props) => {
   return (
     <div className="venuesInfo">
       {props.venues.map((venue, i) => {
-        return <VenueInfo venue={venue} key={i} />
+        return <VenueInfo currentUser={props.currentUser} venue={venue} key={i} />
       })}
     </div>
   );
