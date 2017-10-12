@@ -2,10 +2,13 @@ import React from 'react'
 import '../css/userHome.css';
 import SessionsAdapter from '../adapters/SessionsAdapter';
 import SearchesAdapter from '../adapters/SearchesAdapter';
+import VenuesAdapter from '../adapters/VenuesAdapter';
 import Map from './Map';
 import AutoCompleteForm from './AutoCompleteForm';
 
+
 export default class UserHome extends React.Component {
+
 
   constructor() {
     super()
@@ -15,7 +18,14 @@ export default class UserHome extends React.Component {
     }
   }
 
-
+  getVenues = () => {
+    VenuesAdapter.getVenues(this.state.search.midpoint)
+    .then(data => {
+      this.setState({
+        venues: data
+      })
+    })
+  }
 
   makeSearch = (search) => {
     return SearchesAdapter.makeSearch(search)
@@ -24,13 +34,15 @@ export default class UserHome extends React.Component {
         search: search
       })
     })
+    .then(() => {
+      this.getVenues()
+    })
   }
 
 
   initiateSearch = () => this.setState({initiateSearch: !this.state.initiateSearch})
 
   render() {
-    debugger
     return(
       <div id="user-home-page">
         <div className="inner-user-home-page">

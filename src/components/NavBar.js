@@ -6,7 +6,7 @@ const NavBar = (props) => {
     <div className="navbar">
       {props.currentUser.id ?
         <div>
-          <button onClick={props.reload}>Home</button>
+          <button onClick={props.reloadUserHome}>Home</button>
           <button onClick={props.logOut}>LogOut</button>
           <NavLink to="/searchpage">Recent Searches</NavLink>
         </div>

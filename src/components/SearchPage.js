@@ -30,7 +30,6 @@ export default class SearchPage extends React.Component {
   }
 
   render() {
-    debugger
     return (
       <div>
         <RecentSearches searches={this.state.userSearches} />

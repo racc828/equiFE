@@ -114,8 +114,8 @@ class App extends Component {
     )
   }
 
-  reload = () => {
-    window.location.reload()
+  reloadUserHome = () => {
+    window.location.href = "/userhome"
   }
 
   render() {
@@ -123,7 +123,7 @@ class App extends Component {
       <div className="App">
         <div className="navigation">
           <div>
-              <NavBar reload={this.reload} currentUser={this.state.currentUser}
+              <NavBar reloadUserHome={this.reloadUserHome} currentUser={this.state.currentUser}
               logOut={this.logOut} />
               <Route exact path="/" render={this.renderHome}/>
               <Route exact path="/login" render={this.renderLogin}/>

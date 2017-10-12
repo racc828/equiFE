@@ -8,7 +8,7 @@ export default class UsersAdapter {
       headers: headers(),
       body: JSON.stringify(user)
     })
-    .then( resp => resp.json())
+    .then( resp => {resp.json()})
     localStorage.setItem('token', user.jwt)
   }
 

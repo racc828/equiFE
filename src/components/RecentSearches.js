@@ -3,7 +3,6 @@ import SearchesAdapter from '../adapters/SearchesAdapter'
 import RecentSearch from '../components/RecentSearch'
 
 const RecentSearches = (props) => {
-  debugger
   return (
     <div>
       {props.searches.map((search, i) => {

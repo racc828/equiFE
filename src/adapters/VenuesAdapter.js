@@ -1,35 +1,18 @@
 export default class VenuesAdapter {
 
-    var map;
-    var service;
-    var infowindow;
 
-    function initialize() {
-
-      var pyrmont = new google.maps.LatLng(-33.8665433,151.1956316);
-
-      map = new google.maps.Map(document.getElementById('map'), {
-          center: pyrmont,
-          zoom: 15
-        });
-
-      var request = {
-        location: pyrmont,
-        radius: '500',
-        type: ['restaurant']
-      };
-
-      service = new google.maps.places.PlacesService(map);
-      service.nearbySearch(request, callback);
-    }
-
-    function callback(results, status) {
-      if (status == google.maps.places.PlacesServiceStatus.OK) {
-        for (var i = 0; i < results.length; i++) {
-          var place = results[i];
-        }
+  static getVenues(midpoint){
+    let proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+    let targetUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=` + `${midpoint.latitude}` + `,` + `${midpoint.longitude}` + `&radius=10000&type=restaurant&keyword=cruise&key=AIzaSyBFRY5wL6-C7xoiMksdLkTUWySSlIBDVvI`
+    return fetch(proxyUrl + targetUrl, {
+      method: 'GET',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET',
+        'Content-Type': 'application/json'
       }
-    }
-
+    })
+    .then(resp => resp.json())
+  }
 
 }
