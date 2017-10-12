@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import UserHome from './components/UserHome';
+import SearchPage from './components/SearchPage';
 import Home from './components/Home';
 import SessionsAdapter from './adapters/SessionsAdapter';
 import UsersAdapter from './adapters/UsersAdapter';
@@ -25,9 +26,27 @@ class App extends Component {
     }
   }
 
+  componentDidMount(){
+    SessionsAdapter.currentUser()
+      .then( data => {
+        this.setState({
+          currentUser: data
+        })
+      })
+    }
+
+  componentWillReceiveProps(){
+    SessionsAdapter.currentUser()
+      .then( data => {
+        this.setState({
+          currentUser: data
+        })
+      })
+    }
+
   getUser = (user) => {
     return SessionsAdapter.getUser(user)
-    .then( userData => {
+    .then( (userData) => { debugger
       this.setState({
         currentUser: userData
       })
@@ -89,18 +108,27 @@ class App extends Component {
     )
   }
 
-  // API KEY: AIzaSyDgoHVOnLjaoJzwnWUmCCiAwk7Q-SYjqV0
+  renderSearchPage = () => {
+    return (
+      <SearchPage currentUser={this.state.currentUser} />
+    )
+  }
+
+  reload = () => {
+    window.location.reload()
+  }
 
   render() {
     return (
       <div className="App">
         <div className="navigation">
           <div>
-              <NavBar currentUser={this.state.currentUser}
+              <NavBar reload={this.reload} currentUser={this.state.currentUser}
               logOut={this.logOut} />
               <Route exact path="/" render={this.renderHome}/>
               <Route exact path="/login" render={this.renderLogin}/>
               <Route exact path="/signup" render={this.renderSignUp}/>
+              <Route exact path="/searchpage" render={this.renderSearchPage}/>
               <Route exact path="/userhome" render={this.renderUserHome}/>
           </div>
         </div>

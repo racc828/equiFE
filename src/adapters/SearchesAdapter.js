@@ -9,6 +9,15 @@ export default class SearchesAdapter {
     })
     .then( resp => resp.json())
   }
+
+  static getUserSearches() {
+    return fetch('http://localhost:3000/api/v1/searches/get_user_searches', {
+      method: 'POST',
+      headers:headers()
+    })
+    .then( resp => resp.json())
+  }
+
 }
 
 let headers = () => {

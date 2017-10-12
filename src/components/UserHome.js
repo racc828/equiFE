@@ -15,6 +15,8 @@ export default class UserHome extends React.Component {
     }
   }
 
+
+
   makeSearch = (search) => {
     return SearchesAdapter.makeSearch(search)
     .then(search => {
@@ -24,22 +26,15 @@ export default class UserHome extends React.Component {
     })
   }
 
-  componentDidMount(){
-    SessionsAdapter.currentUser()
-      .then( data => {
-        this.setState({
-          currentUser: data
-        })
-      })
-    }
 
   initiateSearch = () => this.setState({initiateSearch: !this.state.initiateSearch})
 
   render() {
+    debugger
     return(
       <div id="user-home-page">
         <div className="inner-user-home-page">
-          <p>Welcome {this.state.currentUser.firstname} </p>
+          <p>Welcome {this.props.currentUser.firstname} </p>
             {this.state.initiateSearch ? <Map
               googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
               loadingElement={<div style={{ height: `100%` }} />}
