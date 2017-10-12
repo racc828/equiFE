@@ -3,7 +3,7 @@ export default class VenuesAdapter {
 
   static getVenues(midpoint){
     let proxyUrl = 'https://cors-anywhere.herokuapp.com/'
-    let targetUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=` + `${midpoint.latitude}` + `,` + `${midpoint.longitude}` + `&radius=10000&type=restaurant&keyword=cruise&key=AIzaSyBFRY5wL6-C7xoiMksdLkTUWySSlIBDVvI`
+    let targetUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=` + `${midpoint.latitude}` + `,` + `${midpoint.longitude}` + `&radius=8000&type=restaurant&keyword=cruise&key=AIzaSyBFRY5wL6-C7xoiMksdLkTUWySSlIBDVvI`
     return fetch(proxyUrl + targetUrl, {
       method: 'GET',
       headers: {
