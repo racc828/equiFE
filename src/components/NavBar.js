@@ -6,10 +6,11 @@ const NavBar = (props) => {
     <div className="navbar">
       {props.currentUser.id ?
         <div>
-          <NavLink to="/userhome">Home</NavLink> 
+          <NavLink to="/userhome">Home</NavLink>
           <button onClick={props.logOut}>LogOut</button>
           <NavLink to="/searchpage">Recent Searches</NavLink>
           <NavLink to="/savedvenues">Saved Venues</NavLink>
+          <NavLink to="/findfriends">Find Friends</NavLink>
         </div>
       :
       <div>
