@@ -62,24 +62,30 @@ export default class UserHome extends React.Component {
 
   render() {
     return(
-      <div id="user-home-page">
-        <div className="inner-user-home-page">
+      <div id="user-home">
+        <div className="user-home-header">
           <p>Welcome {this.props.currentUser.firstname} </p>
-            {this.state.initiateSearch ?
-              <div>
-                <VenuesInfo venues={this.state.venues} currentUser={this.props.currentUser}  />
-                <Map
-                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFRY5wL6-C7xoiMksdLkTUWySSlIBDVvI&v=3.exp&libraries=geometry,drawing,places"
-                loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: `400px` }} />}
-                mapElement={<div style={{ height: `100%` }} />}
-                search={this.state.search}
-                venues={this.state.venues}
-                isMarkerShown
-                />
-             </div> :
-             <AutoCompleteForm makeSearch={this.makeSearch} initiateSearch={this.initiateSearch} />   }
-          </div>
+        </div>
+        <div className="user-home-page">
+          <div className="inner-user-home-page">
+            <h1 className="text-primary">Equidestined</h1>
+            <p className="text-grey">Enter two or three addresses to find the optimal meeting spot!</p>
+              {this.state.initiateSearch ?
+                <div>
+                  <VenuesInfo venues={this.state.venues} currentUser={this.props.currentUser}  />
+                  <Map
+                  googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFRY5wL6-C7xoiMksdLkTUWySSlIBDVvI&v=3.exp&libraries=geometry,drawing,places"
+                  loadingElement={<div style={{ height: `100%` }} />}
+                  containerElement={<div style={{ height: `400px` }} />}
+                  mapElement={<div style={{ height: `100%` }} />}
+                  search={this.state.search}
+                  venues={this.state.venues}
+                  isMarkerShown
+                  />
+               </div> :
+               <AutoCompleteForm makeSearch={this.makeSearch} initiateSearch={this.initiateSearch} />   }
+            </div>
+        </div>
       </div>
     )
   }

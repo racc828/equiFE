@@ -25,7 +25,8 @@ class AutoCompleteInput extends React.Component {
     }
 
     return (
-      <div>
+      <div className="left">
+        <label>Address</label>
         <PlacesAutocomplete inputProps={inputProps} />
       </div>
 

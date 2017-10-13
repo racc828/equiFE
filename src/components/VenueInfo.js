@@ -10,10 +10,12 @@ export default class VenueInfo extends React.Component {
   }
 
   render(){
+    debugger
     return(
       <div className="venueInfo">
-        {this.props.venue.name}
-        <button onClick={this.saveVenue}>Save Venue</button>
+        {this.props.venue.name} : {this.props.venue.vicinity}
+        { this.props.currentUser !== undefined ? <button onClick={this.saveVenue}>Save Venue</button> : null
+        }
       </div>
     )
   }
