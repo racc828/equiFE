@@ -11,6 +11,7 @@ import './App.css';
 import PropTypes from 'prop-types'
 import NavBar from './components/NavBar'
 import Map from './components/Map'
+import SavedVenues from './components/SavedVenues'
 
 class App extends Component {
 
@@ -114,6 +115,12 @@ class App extends Component {
     )
   }
 
+  renderSavedVenues = () => {
+    return(
+      <SavedVenues currentUser={this.state.currentUser} />
+    )
+  }
+
   reloadUserHome = () => {
     window.location.href = "/userhome"
   }
@@ -130,6 +137,7 @@ class App extends Component {
               <Route exact path="/signup" render={this.renderSignUp}/>
               <Route exact path="/searchpage" render={this.renderSearchPage}/>
               <Route exact path="/userhome" render={this.renderUserHome}/>
+              <Route exact path="/savedvenues" render={this.renderSavedVenues}/>
           </div>
         </div>
       </div>

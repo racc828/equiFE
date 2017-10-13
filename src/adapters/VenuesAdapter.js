@@ -14,7 +14,6 @@ export default class VenuesAdapter {
   }
 
   static saveVenue(venue, userId) {
-    debugger
     return fetch('http://localhost:3000/api/v1/venues',{
       method: 'POST',
       headers: headers(),
@@ -23,6 +22,15 @@ export default class VenuesAdapter {
         vicinity: venue.vicinity,
         user_id: userId
       })
+    })
+    .then( resp => resp.json())
+  }
+
+  static getSavedVenues() {
+    debugger
+    return fetch('http://localhost:3000/api/v1/venues',{
+      method: 'GET',
+      headers: headers()
     })
     .then( resp => resp.json())
   }

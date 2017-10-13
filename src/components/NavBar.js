@@ -9,6 +9,7 @@ const NavBar = (props) => {
           <button onClick={props.reloadUserHome}>Home</button>
           <button onClick={props.logOut}>LogOut</button>
           <NavLink to="/searchpage">Recent Searches</NavLink>
+          <NavLink to="/savedvenues">Saved Venues</NavLink>
         </div>
       :
       <div>

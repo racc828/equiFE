@@ -69,13 +69,14 @@ export default class UserHome extends React.Component {
               <div>
                 <VenuesInfo venues={this.state.venues} currentUser={this.props.currentUser}  />
                 <Map
-                googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFRY5wL6-C7xoiMksdLkTUWySSlIBDVvI&v=3.exp&libraries=geometry,drawing,places"
                 loadingElement={<div style={{ height: `100%` }} />}
                 containerElement={<div style={{ height: `400px` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
                 search={this.state.search}
                 venues={this.state.venues}
-                isMarkerShown />
+                isMarkerShown
+                />
              </div> :
              <AutoCompleteForm makeSearch={this.makeSearch} initiateSearch={this.initiateSearch} />   }
           </div>
