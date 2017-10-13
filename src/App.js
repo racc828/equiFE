@@ -13,6 +13,7 @@ import NavBar from './components/NavBar'
 import Map from './components/Map'
 import SavedVenues from './components/SavedVenues'
 import FindFriends from './components/FindFriends'
+import FriendsFollowed from './components/FriendsFollowed'
 
 class App extends Component {
 
@@ -48,7 +49,7 @@ class App extends Component {
 
   getUser = (user) => {
     return SessionsAdapter.getUser(user)
-    .then( (userData) => { debugger
+    .then( (userData) => {
       this.setState({
         currentUser: userData
       })
@@ -128,6 +129,12 @@ class App extends Component {
     )
   }
 
+  renderFriendsFollowed = () => {
+    return(
+      <FriendsFollowed currentUser={this.state.currentUser} />
+    )
+  }
+
   reloadUserHome = () => {
     window.location.href = "/userhome"
   }
@@ -146,6 +153,7 @@ class App extends Component {
               <Route exact path="/userhome" render={this.renderUserHome}/>
               <Route exact path="/savedvenues" render={this.renderSavedVenues}/>
               <Route exact path="/findfriends" render={this.renderFindFriends}/>
+              <Route exact path="/myfriends" render={this.renderFriendsFollowed}/>
           </div>
         </div>
       </div>

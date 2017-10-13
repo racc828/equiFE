@@ -11,6 +11,7 @@ const NavBar = (props) => {
           <NavLink to="/searchpage">Recent Searches</NavLink>
           <NavLink to="/savedvenues">Saved Venues</NavLink>
           <NavLink to="/findfriends">Find Friends</NavLink>
+          <NavLink to="/myfriends">My Friends</NavLink>
         </div>
       :
       <div>
