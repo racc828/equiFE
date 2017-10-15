@@ -22,10 +22,15 @@ export default class SavedVenues extends React.Component {
 
   render() {
     return(
-      <div>
-        {this.state.savedVenues.map((venue, i) => {
-          return <SavedVenue venue={venue} key={i} />
-        })}
+      <div className="white-box-outer">
+        <div className="white-box-inner">
+          <h1 className="text-primary">
+            Saved Venues
+          </h1>
+          {this.state.savedVenues.map((venue, i) => {
+            return <SavedVenue venue={venue} key={i} />
+          })}
+        </div>
       </div>
     )
   }

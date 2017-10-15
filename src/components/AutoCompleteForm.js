@@ -10,7 +10,8 @@ class AutoCompleteForm extends React.Component {
     this.state = {
       address1: "",
       address2: "",
-      address3: ""
+      address3: "",
+      loading: false
     }
   }
 
@@ -22,6 +23,7 @@ class AutoCompleteForm extends React.Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault()
+    this.setState({loading:true})
     let search = this.state
     this.props.makeSearch(search)
     .then(() => {
@@ -31,12 +33,17 @@ class AutoCompleteForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleFormSubmit} className="left">
-        {["address1", "address2", "address3"].map((address, i) => {
-          return <AutoCompleteInput key={i} address={address} handleAddresses={this.handleAddresses} />
-        })}
-        <button type="submit">Get Midpoint!</button>
-      </form>
+      <div>
+        {this.state.loading ? <div className="loader-container"><div className="loader"></div></div> : null }
+        <h1 className="text-primary left">Equidestined</h1>
+        <p className="text-grey">Enter two or three addresses to find the optimal meeting spot!</p>
+        <form onSubmit={this.handleFormSubmit} className="left">
+          {["address1", "address2", "address3"].map((address, i) => {
+            return <AutoCompleteInput key={i} address={address} handleAddresses={this.handleAddresses} />
+          })}
+          <button type="submit">Get Midpoint!</button>
+        </form>
+      </div>
     )
   }
 }

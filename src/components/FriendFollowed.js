@@ -10,8 +10,8 @@ export default class FriendFollowed extends React.Component {
   render() {
     return(
       <div>
-        {this.props.friend.firstname}
-        <button onClick={this.unFollow}>Unfollow</button>
+        <p>{this.props.friend.firstname}
+        <button className="float-right" onClick={this.unFollow}>Unfollow</button></p>
       </div>
     )
   }

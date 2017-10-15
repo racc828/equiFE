@@ -5,7 +5,6 @@ import FollowersAdapter from '../adapters/FollowersAdapter'
 export default class FriendsList extends React.Component {
 
 
-
   followUser = () => {
     this.props.followUser(this.props.friend)
   }
@@ -18,18 +17,19 @@ export default class FriendsList extends React.Component {
   render() {
     return(
       <div>
-        {this.props.friend.firstname}
+        <p>
         {this.props.friend.username}
         {
-         this.props.followedFriends.length ===0 ?
-            <button onClick={this.followUser}>Follow</button> : this.props.followedFriends.map((friend,i) => {
+          this.props.followedFriends.length ===0 ?
+            <button onClick={this.followUser} className="float-right">Follow</button> : this.props.followedFriends.map((friend,i) => {
               if (friend.id === this.props.friend.id) {
-                return <button onClick={this.unFollow}>UnFollow</button>
+                return <button onClick={this.unFollow} className="float-right">UnFollow</button>
               } else {
-                return <button onClick={this.followUser}>Follow</button>
+                return <button onClick={this.followUser} className="float-right">Follow</button>
               }
             })
         }
+        </p>
       </div>
     )
   }

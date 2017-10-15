@@ -24,6 +24,7 @@ export default class FindFriends extends React.Component {
   }
 
   findFriends = (friend) => {
+    debugger
     UsersAdapter.findFriends(friend)
     .then(matchedFriends => {
       this.setState({matchedFriends})
@@ -31,7 +32,6 @@ export default class FindFriends extends React.Component {
   }
 
   followUser = (friend) => {
-    debugger
     FollowersAdapter.followUser(friend)
     .then(friend => {
       this.setState({
@@ -47,10 +47,12 @@ export default class FindFriends extends React.Component {
 
   render(){
     return(
-      <div>
-        <FindFriendsForm findFriends={this.findFriends} />
-        <FriendsList friends={this.state.friends}
-          unFollow={this.unFollow} followUser={this.followUser} matchedFriends={this.state.matchedFriends} />
+      <div className="white-box-outer">
+        <div className="white-box-inner">
+          <FindFriendsForm findFriends={this.findFriends} />
+          <FriendsList friends={this.state.friends}
+            unFollow={this.unFollow} followUser={this.followUser} matchedFriends={this.state.matchedFriends} />
+        </div>
       </div>
     )
   }

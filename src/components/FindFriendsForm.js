@@ -25,6 +25,7 @@ export default class FindFriendsForm extends React.Component {
   render(){
     return(
       <div>
+        <h1 className="text-primary">Search a friends name</h1>
         <form onSubmit={this.handleSubmit}>
           <input type="text" name="friend" onChange={this.handleChange} required/>
           <button type="submit">Search</button>

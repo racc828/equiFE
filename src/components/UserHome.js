@@ -68,10 +68,10 @@ export default class UserHome extends React.Component {
         </div>
         <div className="user-home-page">
           <div className="inner-user-home-page">
-            <h1 className="text-primary left">Equidestined</h1>
-            <p className="text-grey">Enter two or three addresses to find the optimal meeting spot!</p>
               {this.state.initiateSearch ?
                 <div>
+                  <h1 className="text-primary left">Here's Your Midpoint!</h1>
+                  <p><span><img src="https://maps.google.com/mapfiles/ms/icons/red-dot.png"/></span>{this.state.search.midpointAddress}</p>
                   <VenuesInfo venues={this.state.venues} currentUser={this.props.currentUser}  />
                   <Map
                   googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFRY5wL6-C7xoiMksdLkTUWySSlIBDVvI&v=3.exp&libraries=geometry,drawing,places"

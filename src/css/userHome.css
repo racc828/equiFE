@@ -1,16 +1,20 @@
+.white-box-outer,
 .user-home-page {
   background:rgba(255,255,255, .9);
   width:500px;
   padding:20px 50px;
   margin:auto;
+  max-height:600px;
+  overflow-y: auto;
   margin-top:3%;
   box-shadow:0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3);
 }
-
+.white-box-outer h1,
 .user-home-page h1 {
   margin-top:0;
+  text-align:left;
 }
-
+.white-box-outer input,
 .user-home-page input {
   border-top:none;
   border-left:none;
@@ -21,11 +25,11 @@
   outline:none;
   width:100%;
 }
-
+.white-box-inner p,
 .inner-user-home-page p {
   text-align:left;
 }
-
+.white-box-inner,
 .inner-user-home-page {
   width:100%;
   margin:auto;

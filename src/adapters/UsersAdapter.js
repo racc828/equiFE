@@ -3,13 +3,24 @@ const path = 'http://localhost:3000/api/v1/users'
 export default class UsersAdapter {
 
   static createUser(user) {
+    debugger
     return fetch(path, {
       method: 'post',
       headers:{
       'Accept': 'application/json',
       'Content-Type': 'application/json'
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify({
+        user: {
+          firstname: user.user.firstname,
+          lastname: user.user.lastname,
+          email: user.user.email,
+          username: user.user.username,
+          password: user.user.password,
+          fullname: user.user.firstname + " " + user.user.lastname
+        }
+
+      })
     })
     .then( resp => resp.json())
     localStorage.setItem('token', user.jwt)
@@ -20,7 +31,7 @@ export default class UsersAdapter {
       method: 'POST',
       headers: headers(),
       body: JSON.stringify({
-        firstname: friend
+        fullname: friend
       })
     })
     .then( resp => resp.json())
