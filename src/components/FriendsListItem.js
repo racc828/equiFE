@@ -17,19 +17,18 @@ export default class FriendsList extends React.Component {
   render() {
     return(
       <div>
-        <p>
-        {this.props.friend.username}
+        <div className="list-container">
+        <p>{this.props.friend.username} </p>
         {
           this.props.followedFriends.length ===0 ?
-            <button onClick={this.followUser} className="float-right">Follow</button> : this.props.followedFriends.map((friend,i) => {
+            <div><button onClick={this.followUser} className="float-right follow-user">Follow</button></div> : this.props.followedFriends.map((friend,i) => {
               if (friend.id === this.props.friend.id) {
-                return <button onClick={this.unFollow} className="float-right">UnFollow</button>
+                return <div><button key={i} onClick={this.unFollow} className="float-right unfollow-user">UnFollow</button></div>
               } else {
-                return <button onClick={this.followUser} className="float-right">Follow</button>
-              }
+                return <div><button key={i} onClick={this.followUser} className="float-right follow-user">Follow</button></div> }
             })
         }
-        </p>
+        </div>
       </div>
     )
   }

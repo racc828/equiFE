@@ -6,7 +6,8 @@ class AutoCompleteInput extends React.Component {
   constructor() {
     super()
     this.state = {
-      address:""
+      address:"",
+      inputLoading: false
     }
   }
 
@@ -19,6 +20,7 @@ class AutoCompleteInput extends React.Component {
   }
 
   getLocation = () => {
+    this.setState({inputLoading:true})
     if (navigator.geolocation) {
       console.log(navigator.geolocation.getCurrentPosition(this.currPositionCoordinates))
     } else {
@@ -29,10 +31,15 @@ class AutoCompleteInput extends React.Component {
   currPositionCoordinates = (position) => {
     let latitude = position.coords.latitude
     let longitude = position.coords.longitude
+    let key = this.props.address
     ConversionsAdapter.makeConversion(latitude, longitude)
-    .then(data => {this.setState({
-      address: data.address
-    })})
+    .then(data => {
+      this.setState({
+        address: data.address,
+        inputLoading: false
+      })
+      this.props.handleAddresses(key, data.address)
+  })
   }
 
   render() {
@@ -45,7 +52,7 @@ class AutoCompleteInput extends React.Component {
     return (
       <div className="left auto-complete-form">
         <label>Address</label>
-        <PlacesAutocomplete inputProps={inputProps} />
+        {this.state.inputLoading ? <input className="input-loading" /> : <PlacesAutocomplete inputProps={inputProps} />  }
         {this.props.address === "address1" ? <button type="button" className="current-location" onClick={this.getLocation}><i className="fa fa-map-marker"></i></button> : null}
       </div>
 

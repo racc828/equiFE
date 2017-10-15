@@ -1,5 +1,4 @@
 body {
-  text-align:center;
   background:#1279be url("https://images.unsplash.com/photo-1495420047114-9f6ef7fc0cbc?dpr=1&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1000&amp;q=80&amp;cs=tinysrgb&amp;crop=") no-repeat;
   background-attachment: fixed;
   background-size:cover;
@@ -49,6 +48,36 @@ button:hover {
   background:#2bbbad;
   box-shadow:0 3px 3px 0 rgba(0,0,0,0.14), 0 1px 7px 0 rgba(0,0,0,0.12), 0 3px 1px -1px rgba(0,0,0,0.2);
   cursor:pointer;
+}
+
+.input-loading {
+  background: url("http://www.hsi.com.hk/HSI-Net/pages/images/en/share/ajax-loader.gif") no-repeat left center!important;
+  height:32px;
+}
+
+.navbar {
+  text-align:right;
+  color:#fff;
+  padding-top:20px;
+}
+
+
+.navbar a {
+  color:#fff;
+  text-decoration:none;
+  font-size:1.3em;
+  margin-left:10px;
+  margin-right:10px;
+  cursor:pointer;
+}
+
+.container {
+  width:90%;
+  margin:auto;
+}
+
+.text-white {
+  color:#fff;
 }
 
 .user-home-page{
@@ -120,6 +149,19 @@ button:hover {
   width:auto;
 }
 
+/* footer */
+.footer {
+  color:#fff;
+  border-top:2px solid #fff;
+  margin-top:40px;
+  padding-top:20px;
+  padding-bottom:20px;
+}
+
+.footer a {
+  color:#fff;
+}
+
 /* loader */
 
 .loader:empty,
@@ -152,7 +194,7 @@ button:hover {
   border-top: 1.1em solid rgba(0, 0, 0, 0.2);
   border-right: 1.1em solid rgba(0, 0, 0, 0.2);
   border-bottom: 1.1em solid rgba(0, 0, 0, 0.2);
-  border-left: 1.1em solid #000000;
+  border-left: 1.1em solid #26a69a;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);

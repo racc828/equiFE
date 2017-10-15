@@ -14,6 +14,8 @@ import Map from './components/Map'
 import SavedVenues from './components/SavedVenues'
 import FindFriends from './components/FindFriends'
 import FriendsFollowed from './components/FriendsFollowed'
+import Footer from './components/Footer'
+import About from './components/About'
 
 class App extends Component {
 
@@ -129,6 +131,12 @@ class App extends Component {
     )
   }
 
+  renderAbout = () => {
+    return(
+      <About />
+    )
+  }
+
   renderFriendsFollowed = () => {
     return(
       <FriendsFollowed currentUser={this.state.currentUser} />
@@ -154,7 +162,11 @@ class App extends Component {
               <Route exact path="/savedvenues" render={this.renderSavedVenues}/>
               <Route exact path="/findfriends" render={this.renderFindFriends}/>
               <Route exact path="/myfriends" render={this.renderFriendsFollowed}/>
+              <Route exact path="/about" render={this.renderAbout}/>
           </div>
+        </div>
+        <div className="footer">
+          <Footer />
         </div>
       </div>
     );
