@@ -31,11 +31,11 @@ class AutoCompleteForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleFormSubmit}>
+      <form onSubmit={this.handleFormSubmit} className="left">
         {["address1", "address2", "address3"].map((address, i) => {
           return <AutoCompleteInput key={i} address={address} handleAddresses={this.handleAddresses} />
         })}
-        <button type="submit">Submit </button>
+        <button type="submit">Get Midpoint!</button>
       </form>
     )
   }

@@ -68,7 +68,7 @@ export default class UserHome extends React.Component {
         </div>
         <div className="user-home-page">
           <div className="inner-user-home-page">
-            <h1 className="text-primary">Equidestined</h1>
+            <h1 className="text-primary left">Equidestined</h1>
             <p className="text-grey">Enter two or three addresses to find the optimal meeting spot!</p>
               {this.state.initiateSearch ?
                 <div>
