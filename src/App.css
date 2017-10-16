@@ -153,6 +153,16 @@ button:hover {
   width:auto;
 }
 
+.span-error-wrapper {
+  position:relative;
+}
+
+.span-error {
+  color:red;
+  bottom:-18px;
+  position:absolute;
+}
+
 /* footer */
 .footer {
   color:#fff;

@@ -37,7 +37,10 @@ export default class SignUp extends React.Component {
               <input onChange={this.handleChange} name="firstname" type="text" placeholder="First Name"/>
               <input onChange={this.handleChange} name="lastname" type="text" placeholder="Last Name"/>
               <input onChange={this.handleChange} name="email" type="email" placeholder="Email"/>
-              <input onChange={this.handleChange} name="username" type="text" placeholder="Username"/>
+              <div className="span-error-wrapper">
+                {this.props.userExists? <small className="span-error">Username already exists, please enter a different one above</small> : null}
+                <input onChange={this.handleChange} name="username" type="text" placeholder="Username"/>
+              </div>
               <input onChange={this.handleChange} name="password" type="password" placeholder="Password"/>
               <button type="submit">Sign Up</button>
             </form>

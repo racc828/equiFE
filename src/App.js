@@ -27,7 +27,9 @@ class App extends Component {
     super()
     this.state = {
       currentUser: {},
-      error:false
+      error:false,
+      userExists: false,
+      dropdown: false
     }
   }
 
@@ -58,7 +60,7 @@ class App extends Component {
       localStorage.setItem('token', userData.jwt)
     })
     .then(() => {
-        this.state.currentUser.error ? this.setState({error: true}) : this.context.router.history.push("/userhome");
+        this.state.currentUser.error ? this.setState({error: true}) : this.context.router.history.push("/userhome")
       })
   }
 
@@ -69,25 +71,33 @@ class App extends Component {
   createUser = (user) => {
     return UsersAdapter.createUser(user)
     .then( userData => {
-      this.setState({
-        currentUser: userData
-      })
-      localStorage.setItem('token', userData.jwt)
+      debugger
+      if (userData.error) {
+        this.setState({
+          userExists:true
+        })
+      } else {
+        this.setState({
+          currentUser: userData,
+          userExists:false
+        })
+        localStorage.setItem('token', userData.jwt)
+      }
     })
     .then(() => {
-      this.context.router.history.push("/userhome")
+      this.state.currentUser.id ? this.context.router.history.push("/userhome") : null
     })
   }
 
   logOut = () => {
     localStorage.token = ""
-    this.setState({currentUser:{}})
+    this.setState({currentUser:{}, dropdown:false})
     this.context.router.history.push("/")
   }
 
   renderSignUp = () => {
     return (
-      <SignUp createUser={this.createUser} />
+      <SignUp userExists={this.state.userExists} createUser={this.createUser} />
     )
   }
 
@@ -143,6 +153,8 @@ class App extends Component {
     )
   }
 
+  dropdownOpen = () => this.setState({dropdown: !this.state.dropdown})
+
   reloadUserHome = () => {
     window.location.href = "/userhome"
   }
@@ -152,7 +164,7 @@ class App extends Component {
       <div className="App">
         <div className="navigation">
           <div>
-              <NavBar reloadUserHome={this.reloadUserHome} currentUser={this.state.currentUser}
+              <NavBar dropdown={this.state.dropdown} dropdownOpen={this.dropdownOpen} reloadUserHome={this.reloadUserHome} currentUser={this.state.currentUser}
               logOut={this.logOut} />
               <Route exact path="/" render={this.renderHome}/>
               <Route exact path="/login" render={this.renderLogin}/>
