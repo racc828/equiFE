@@ -62,7 +62,14 @@ class App extends Component {
       localStorage.setItem('token', userData.jwt)
     })
     .then(() => {
-        this.state.currentUser.error ? this.setState({error: true}) : this.context.router.history.push("/userhome")
+        if(this.state.currentUser.error) {
+          this.setState({error: true})
+        } else {
+          this.context.router.history.push("/userhome")
+          this.setState({
+            error:false
+          })
+        }
       })
   }
 
@@ -121,8 +128,7 @@ class App extends Component {
   renderLogin = () => {
     return (
       <div>
-        <Login resetError={this.resetError} getUser={this.getUser} />
-        {this.state.error ? <span className="error"><small>Invalid Login Credentials</small> </span> : null}
+        <Login resetError={this.resetError} getUser={this.getUser} error={this.state.error} />
       </div>
     )
   }
@@ -185,7 +191,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="navigation">
+        <div className="navigation full-pg">
           <div>
               <NavBar dropdown={this.state.dropdown} dropdownOpen={this.dropdownOpen} reloadUserHome={this.reloadUserHome} currentUser={this.state.currentUser}
               logOut={this.logOut} />

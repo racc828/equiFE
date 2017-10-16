@@ -27,7 +27,9 @@ class AutoCompleteForm extends React.Component {
     let search = this.state
     this.props.makeSearch(search)
     .then(() => {
-      this.props.initiateSearch()
+      this.props.invalidSearch ? this.setState({
+        loading:false
+      }) : null
     })
   }
 
@@ -41,6 +43,7 @@ class AutoCompleteForm extends React.Component {
           {["address1", "address2", "address3"].map((address, i) => {
             return <AutoCompleteInput key={i} address={address} handleAddresses={this.handleAddresses} />
           })}
+          {this.props.invalidSearch ? <div className="text-red-container"><small className="text-red">Invalid Search, please search again</small></div> : null }
           <button type="submit">Get Midpoint!</button>
         </form>
       </div>

@@ -161,10 +161,31 @@ button:hover {
   position:relative;
 }
 
+.full-pg {
+  min-height:100vh;
+}
+
 .span-error {
   color:red;
   bottom:-18px;
   position:absolute;
+}
+
+.red {
+  color:red;
+}
+
+.green {
+  color:green;
+}
+
+.text-red-container {
+  margin-bottom:10px;
+}
+
+.text-red {
+  color:red;
+  font-family:1.5rem;
 }
 
 .more-midpoints-link {

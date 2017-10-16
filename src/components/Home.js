@@ -13,7 +13,8 @@ export default class Home extends React.Component {
     super()
     this.state = {
       initiateSearch: false,
-      venues: []
+      venues: [],
+      invalidSearch: false
       }
   }
 
@@ -42,15 +43,27 @@ export default class Home extends React.Component {
       return comparison
     }
 
-  makeSearch = (search) => {
-    return SearchesAdapter.makeSearch(search)
-    .then(search => {
-      this.setState({
-        search: search
+    makeSearch = (search) => {
+      return SearchesAdapter.makeSearch(search)
+      .then(search => {
+        search.midpoint.latitude === null ?
+        this.setState({
+          invalidSearch:true
+        }) :
+        this.setState({
+          initiateSearch: true,
+          search: search,
+          invalidSearch: false
+        })
       })
-    })
-    .then(() => {
-      this.getVenues()
+      .then(() => {
+        !this.state.invalidSearch ? this.getVenues() : null
+      })
+    }
+
+  resetSearch = () => {
+    this.setState({
+      initiateSearch: false
     })
   }
 
@@ -65,7 +78,7 @@ export default class Home extends React.Component {
             {this.state.initiateSearch ?
               <div>
                 <h1 className="text-primary left">Here's Your Midpoint!</h1>
-                <a className="more-midpoints-link" onClick={this.initiateSearch}>Get More Midpoints</a>
+                <a className="more-midpoints-link" onClick={this.resetSearch}>Get More Midpoints</a>
                 <p><span><img className="map-marker" src="https://maps.google.com/mapfiles/ms/icons/red-dot.png"/></span>{this.state.search.midpointAddress}</p>
                 <VenuesInfo venues={this.state.venues}  />
                 <div className="map-container">
@@ -80,7 +93,7 @@ export default class Home extends React.Component {
                   />
                 </div>
              </div> :
-             <AutoCompleteForm makeSearch={this.makeSearch} initiateSearch={this.initiateSearch} />   }
+             <AutoCompleteForm invalidSearch={this.state.invalidSearch} makeSearch={this.makeSearch} />   }
           </div>
         </div>
       </div>

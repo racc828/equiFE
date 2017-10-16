@@ -6,7 +6,7 @@ export default class MidpointMarker extends React.Component {
     super()
     this.state = {
       isOpen: false,
-      loading: true
+      loading:true
     }
   }
 

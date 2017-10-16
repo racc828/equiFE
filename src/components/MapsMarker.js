@@ -26,8 +26,10 @@ export default class MapsMarker extends React.Component {
           {this.state.isOpen &&
           <InfoWindow onCloseClick={this.toggleOpen}>
             <div>
-              <span>{this.props.venue.name} </span>
-              <span>{this.props.venue.vicinity} </span>
+              <p><span>Name: </span>  {this.props.venue.name} </p>
+              <p><span>Address: </span> {this.props.venue.vicinity}</p>
+              <p> {this.props.venue.opening_hours.open_now ? <span className="green">Open Now</span> : <span className="red">Closed</span> } </p>
+              <p> <span>Rating:</span> {this.props.venue.rating} </p>
             </div>
           </InfoWindow>}
         </Marker>

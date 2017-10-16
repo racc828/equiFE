@@ -35,6 +35,7 @@ export default class Login extends React.Component {
               <h1 className="text-primary">Login</h1>
               <input onChange={this.handleChange} name="username" type="text" placeholder="Username"/>
               <input onChange={this.handleChange} name="password" type="password" placeholder="Password"/>
+              {this.props.error ? <div className="text-red-container"><small className="text-red">Invalid username or password</small></div> : null }
               <button type="submit">Login</button>
             </form>
           </div>
