@@ -52,7 +52,7 @@ class AutoCompleteInput extends React.Component {
     return (
       <div className="left auto-complete-form">
         <label>Address</label>
-        {this.state.inputLoading ? <input className="input-loading" /> : <PlacesAutocomplete inputProps={inputProps} />  }
+        {this.state.inputLoading ? <input className="input-loading" value="" /> : <PlacesAutocomplete inputProps={inputProps} />  }
         {this.props.address === "address1" ? <button type="button" className="current-location" onClick={this.getLocation}><i className="fa fa-map-marker"></i></button> : null}
       </div>
 
