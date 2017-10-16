@@ -13,7 +13,6 @@ export default class FollowersAdapter {
   }
 
   static unFollowFriend(friend){
-    debugger
     return fetch('http://localhost:3000/api/v1/follows/unfollow_friend',{
       method: 'POST',
       headers: headers(),
@@ -28,6 +27,17 @@ export default class FollowersAdapter {
     return fetch('http://localhost:3000/api/v1/follows/my_friends',{
       method: 'POST',
       headers: headers()
+    })
+    .then( resp => resp.json())
+  }
+
+  static setFriendInfo(friend) {
+    return fetch('http://localhost:3000/api/v1/follows/get_friend_info',{
+      method: 'POST',
+      headers: headers(),
+      body: JSON.stringify({
+        friend_id: friend.id
+      })
     })
     .then( resp => resp.json())
   }

@@ -19,7 +19,7 @@ const Map = withGoogleMap(props =>
     {props.isMarkerShown &&
       props.venues.map((venue, i) => {
         return (
-          <MapsMarker venue={venue} />
+          <MapsMarker key={i} venue={venue} />
         )
       })
     }

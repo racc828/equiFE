@@ -79,9 +79,13 @@ button:hover {
 .text-white {
   color:#fff;
 }
-
+.enter-site,
 .user-home-page{
   position:relative;
+}
+
+.map-container {
+  margin-top:20px;
 }
 
 .auto-complete-form {
@@ -160,6 +164,7 @@ button:hover {
 
 .footer a {
   color:#fff;
+  text-decoration:none;
 }
 
 /* loader */

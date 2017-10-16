@@ -1,12 +1,15 @@
 import React from 'react'
 import FriendFollowed from './FriendFollowed'
+import FriendInfoPage from './FriendInfoPage'
 import FollowersAdapter from '../adapters/FollowersAdapter'
 
 export default class FriendsFollowed extends React.Component {
   constructor() {
     super()
     this.state = {
-      friends: []
+      friends: [],
+      friendActive: false,
+      friendInfo: {}
     }
   }
 
@@ -20,14 +23,36 @@ export default class FriendsFollowed extends React.Component {
     .then(friends => {this.setState({friends})})
   }
 
+  setFriendInfo = (friend) => {
+    FollowersAdapter.setFriendInfo(friend)
+    .then((data) => {this.setState({
+      friendInfo: data,
+      friendActive:true
+    })})
+  }
+
+  resetActiveFriend = () => {
+    this.setState({
+      friendActive:false,
+      friendInfo: {}
+    })
+  }
+
   render() {
     return(
       <div className="white-box-outer">
         <div className="white-box-inner">
-          <h1 className="text-primary">My Friends</h1>
-          {this.state.friends.map((friend,i) => {
-            return <FriendFollowed unFollow={this.unFollow} friend={friend} key={i} />
-          })}
+          {this.state.friendActive ?
+            <div>
+              <FriendInfoPage resetActiveFriend={this.resetActiveFriend} friendInfo={this.state.friendInfo} />
+            </div> :
+            <div>
+              <h1 className="text-primary">My Friends</h1>
+              {this.state.friends.map((friend,i) => {
+                return <FriendFollowed setFriendInfo={this.setFriendInfo} unFollow={this.unFollow} friend={friend} key={i} />
+              })}
+            </div> }
+
         </div>
       </div>
     )

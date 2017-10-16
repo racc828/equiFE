@@ -9,7 +9,8 @@ export default class FindFriends extends React.Component {
     super()
     this.state = {
       matchedFriends: [],
-      friends: []
+      friends: [],
+      invalidSearch: false
     }
   }
 
@@ -24,10 +25,18 @@ export default class FindFriends extends React.Component {
   }
 
   findFriends = (friend) => {
-    debugger
     UsersAdapter.findFriends(friend)
     .then(matchedFriends => {
-      this.setState({matchedFriends})
+      if (matchedFriends.length === 0) {
+        this.setState({
+          invalidSearch:true
+        })
+      } else {
+        this.setState({
+          matchedFriends: matchedFriends,
+          invalidSearch: false
+        })
+      }
     })
   }
 
@@ -50,8 +59,11 @@ export default class FindFriends extends React.Component {
       <div className="white-box-outer">
         <div className="white-box-inner">
           <FindFriendsForm findFriends={this.findFriends} />
-          <FriendsList friends={this.state.friends}
-            unFollow={this.unFollow} followUser={this.followUser} matchedFriends={this.state.matchedFriends} />
+          {this.state.invalidSearch ?
+          <div>
+            <p>No accounts found</p>
+          </div> : <FriendsList friends={this.state.friends}
+            unFollow={this.unFollow} followUser={this.followUser} matchedFriends={this.state.matchedFriends} /> }
         </div>
       </div>
     )

@@ -55,6 +55,18 @@
   height:35px;
 }
 
+.friend-info-name {
+  position:relative!important;
+}
+
+.fa-long-arrow-left {
+  font-size: 1.3rem;
+  position:absolute;
+  left:-30px;
+  top:12px;
+  cursor:pointer;
+}
+
 .list-container button {
   position:absolute;
   right:0;
@@ -77,6 +89,11 @@
 
 .dropdown-container .fa-caret-down {
   margin-left:15px;
+}
+
+.friend-followed-container a {
+  font-size:1.5rem;
+  cursor:pointer;
 }
 
 .dropdown-open {

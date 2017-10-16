@@ -64,16 +64,20 @@ export default class Home extends React.Component {
           <div className="enter-site-inner">
             {this.state.initiateSearch ?
               <div>
+                <h1 className="text-primary left">Here's Your Midpoint!</h1>
+                <p><span><img className="map-marker" src="https://maps.google.com/mapfiles/ms/icons/red-dot.png"/></span>{this.state.search.midpointAddress}</p>
                 <VenuesInfo venues={this.state.venues}  />
-                <Map
-                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFRY5wL6-C7xoiMksdLkTUWySSlIBDVvI&v=3.exp&libraries=geometry,drawing,places"
-                loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: `400px` }} />}
-                mapElement={<div style={{ height: `100%` }} />}
-                search={this.state.search}
-                venues={this.state.venues}
-                isMarkerShown
-                />
+                <div className="map-container">
+                  <Map
+                  googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFRY5wL6-C7xoiMksdLkTUWySSlIBDVvI&v=3.exp&libraries=geometry,drawing,places"
+                  loadingElement={<div style={{ height: `100%` }} />}
+                  containerElement={<div style={{ height: `400px` }} />}
+                  mapElement={<div style={{ height: `100%` }} />}
+                  search={this.state.search}
+                  venues={this.state.venues}
+                  isMarkerShown
+                  />
+                </div>
              </div> :
              <AutoCompleteForm makeSearch={this.makeSearch} initiateSearch={this.initiateSearch} />   }
           </div>
