@@ -16,6 +16,7 @@ import FindFriends from './components/FindFriends'
 import FriendsFollowed from './components/FriendsFollowed'
 import Footer from './components/Footer'
 import About from './components/About'
+import MyProfile from './components/MyProfile'
 
 class App extends Component {
 
@@ -29,7 +30,8 @@ class App extends Component {
       currentUser: {},
       error:false,
       userExists: false,
-      dropdown: false
+      dropdown: false,
+      editUserExists: false
     }
   }
 
@@ -71,7 +73,6 @@ class App extends Component {
   createUser = (user) => {
     return UsersAdapter.createUser(user)
     .then( userData => {
-      debugger
       if (userData.error) {
         this.setState({
           userExists:true
@@ -86,6 +87,22 @@ class App extends Component {
     })
     .then(() => {
       this.state.currentUser.id ? this.context.router.history.push("/userhome") : null
+    })
+  }
+
+  saveEditProfile = (edits) => {
+   return UsersAdapter.editUser(edits)
+    .then((userData) => {
+      if (userData.error) {
+        this.setState({
+          editUserExists:true
+        })
+      } else {
+        this.setState({
+          currentUser: userData,
+          editUserExists:false
+        })
+      }
     })
   }
 
@@ -120,6 +137,12 @@ class App extends Component {
   renderUserHome = () => {
     return (
       <UserHome currentUser={this.state.currentUser} />
+    )
+  }
+
+  renderMyProfile = () => {
+    return (
+      <MyProfile editUserExists={this.state.editUserExists} saveEditProfile={this.saveEditProfile} currentUser={this.state.currentUser} />
     )
   }
 
@@ -175,6 +198,7 @@ class App extends Component {
               <Route exact path="/findfriends" render={this.renderFindFriends}/>
               <Route exact path="/myfriends" render={this.renderFriendsFollowed}/>
               <Route exact path="/about" render={this.renderAbout}/>
+              <Route exact path="/myprofile" render={this.renderMyProfile}/>
           </div>
         </div>
         <div className="footer">

@@ -26,6 +26,21 @@ export default class UsersAdapter {
     localStorage.setItem('token', user.jwt)
   }
 
+  static editUser(edits) {
+    return fetch(`http://localhost:3000/api/v1/users/${edits.id}`, {
+      method: 'PATCH',
+      headers:headers(),
+      body: JSON.stringify({
+        firstname: edits.firstname,
+        lastname: edits.lastname,
+        email: edits.email,
+        username: edits.username,
+        fullname: edits.firstname + " " + edits.lastname
+      })
+    })
+    .then( resp => resp.json())
+  }
+
   static findFriends(friend) {
     return fetch('http://localhost:3000/api/v1/users/find_friends', {
       method: 'POST',

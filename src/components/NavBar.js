@@ -15,6 +15,7 @@ export default class NavBar extends React.Component {
               <a onClick={this.props.dropdownOpen}><i className="fa fa-user"></i>
               {this.props.currentUser.fullname}<i className="fa fa-caret-down"></i></a>
               {this.props.dropdown ? <div className="dropdown-open">
+                <NavLink onClick={this.props.dropdownOpen} to="/myprofile">My Profile</NavLink>
                 <NavLink onClick={this.props.dropdownOpen} to="/searchpage">Recent Searches</NavLink>
                 <NavLink onClick={this.props.dropdownOpen} to="/savedvenues">Saved Venues</NavLink>
                 <NavLink onClick={this.props.dropdownOpen} to="/myfriends">My Friends</NavLink>

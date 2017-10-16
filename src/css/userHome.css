@@ -50,9 +50,42 @@
   color:#fff;
 }
 
+.relative {
+  position:relative;
+}
+
 .list-container {
   position:relative;
   height:35px;
+}
+
+.edit-profile {
+  position:absolute;
+  top:30px;
+  right:40px;
+  font-size:1.6rem;
+}
+
+#edit-profile-button {
+  background:transparent;
+  box-shadow:none;
+  padding:0;
+}
+
+.edit-profile-text input {
+  display:inline-block!important;
+  width:auto;
+  font-size:1.3rem;
+  margin-left:10px;
+}
+
+.edit-profile-text span {
+  margin-right:3px;
+  font-size:1.3rem;
+}
+
+.edit-profile-text p {
+  font-size:1.3rem;
 }
 
 .friend-info-name {
