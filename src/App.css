@@ -167,6 +167,26 @@ button:hover {
   position:absolute;
 }
 
+.more-midpoints-link {
+  border-bottom:1px dotted #26a69a;
+  color:#26a69a;
+}
+
+.disabled {
+  background:#DFDFDF !important;
+  color:#9F9F9F !important;
+  box-shadow:none;
+}
+
+.disabled:hover {
+  box-shadow:none;
+}
+
+.more-midpoints-link:hover {
+  border-bottom:1px solid #26a69a;
+  cursor:pointer;
+}
+
 /* footer */
 .footer {
   color:#fff;

@@ -20,6 +20,15 @@ export default class SavedVenues extends React.Component {
     .then(data => this.setState({savedVenues: data}))
   }
 
+  deleteVenue = (venue) => {
+    VenuesAdapter.deleteVenue(venue)
+    .then((venues) => {
+      this.setState({
+        savedVenues: venues
+      })
+    })
+  }
+
   render() {
     return(
       <div className="white-box-outer">
@@ -28,7 +37,7 @@ export default class SavedVenues extends React.Component {
             Saved Venues
           </h1>
           {this.state.savedVenues.map((venue, i) => {
-            return <SavedVenue venue={venue} key={i} />
+            return <SavedVenue deleteVenue={this.deleteVenue} venue={venue} key={i} />
           })}
         </div>
       </div>

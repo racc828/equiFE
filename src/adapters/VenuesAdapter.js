@@ -27,10 +27,21 @@ export default class VenuesAdapter {
   }
 
   static getSavedVenues() {
-    debugger
     return fetch('http://localhost:3000/api/v1/venues',{
       method: 'GET',
       headers: headers()
+    })
+    .then( resp => resp.json())
+  }
+
+  static deleteVenue(venue) {
+    debugger
+    return fetch(`http://localhost:3000/api/v1/venues/${venue}`,{
+      method: 'DELETE',
+      headers: headers(),
+      body: JSON.stringify({
+        id: venue
+      })
     })
     .then( resp => resp.json())
   }

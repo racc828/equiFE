@@ -72,6 +72,12 @@
   padding:0;
 }
 
+.venueInfo .fa-trash {
+  float:right;
+  font-size:1.2rem;
+  cursor:pointer;
+}
+
 .edit-profile-text input {
   display:inline-block!important;
   width:auto;

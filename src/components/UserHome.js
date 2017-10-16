@@ -71,6 +71,7 @@ export default class UserHome extends React.Component {
               {this.state.initiateSearch ?
                 <div>
                   <h1 className="text-primary left">Here's Your Midpoint!</h1>
+                  <a className="more-midpoints-link" onClick={this.initiateSearch}>Get More Midpoints</a>
                   <p><span><img className="map-marker" src="https://maps.google.com/mapfiles/ms/icons/red-dot.png"/></span>{this.state.search.midpointAddress}</p>
                   <VenuesInfo venues={this.state.venues} currentUser={this.props.currentUser}  />
                   <div className="map-container">
