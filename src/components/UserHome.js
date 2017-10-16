@@ -17,7 +17,8 @@ export default class UserHome extends React.Component {
       currentUser: {},
       initiateSearch: false,
       venues: [],
-      invalidSearch: false
+      invalidSearch: false,
+      loading: false
       }
   }
 
@@ -34,6 +35,11 @@ export default class UserHome extends React.Component {
           venues: sortedVenues
         })
     })
+    .then(() => {
+      this.setState({
+        loading:false
+      })
+    })
   }
 
   compareRatings = (a, b) => {
@@ -47,16 +53,21 @@ export default class UserHome extends React.Component {
     }
 
   makeSearch = (search) => {
+    this.setState({
+      loading:true
+    })
     return SearchesAdapter.makeSearch(search)
     .then(search => {
       search.midpoint.latitude === null ?
       this.setState({
-        invalidSearch:true
+        invalidSearch:true,
+        loading:false
       }) :
       this.setState({
         initiateSearch: true,
         search: search,
-        invalidSearch: false
+        invalidSearch: false,
+        loading:true
       })
     })
     .then(() => {
@@ -75,11 +86,10 @@ export default class UserHome extends React.Component {
   render() {
     return(
       <div id="user-home">
-        <div className="user-home-header">
-          <p>Welcome {this.props.currentUser.firstname} </p>
-        </div>
+        <a onClick={this.resetSearch} className="header-brand">Equidestined</a>
         <div className="user-home-page">
           <div className="inner-user-home-page">
+              {this.state.loading ? <div className="loader-container"><div className="loader"></div></div> : null }
               {this.state.initiateSearch ?
                 <div>
                   <h1 className="text-primary left">Here's Your Midpoint!</h1>
@@ -98,7 +108,7 @@ export default class UserHome extends React.Component {
                     />
                   </div>
                </div> :
-               <AutoCompleteForm invalidSearch={this.state.invalidSearch} makeSearch={this.makeSearch} />   }
+               <AutoCompleteForm invalidSearch={this.state.invalidSearch} makeSearch={this.makeSearch}  />   }
             </div>
         </div>
       </div>

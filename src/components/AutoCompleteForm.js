@@ -10,8 +10,7 @@ class AutoCompleteForm extends React.Component {
     this.state = {
       address1: "",
       address2: "",
-      address3: "",
-      loading: false
+      address3: ""
     }
   }
 
@@ -23,20 +22,13 @@ class AutoCompleteForm extends React.Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault()
-    this.setState({loading:true})
     let search = this.state
     this.props.makeSearch(search)
-    .then(() => {
-      this.props.invalidSearch ? this.setState({
-        loading:false
-      }) : null
-    })
   }
 
   render() {
     return (
       <div>
-        {this.state.loading ? <div className="loader-container"><div className="loader"></div></div> : null }
         <h1 className="text-primary left">Equidestined</h1>
         <p className="text-grey">Enter two or three addresses to find the optimal meeting spot!</p>
         <form onSubmit={this.handleFormSubmit} className="left">

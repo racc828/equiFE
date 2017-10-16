@@ -5,13 +5,8 @@ export default class MidpointMarker extends React.Component {
   constructor() {
     super()
     this.state = {
-      isOpen: false,
-      loading:true
+      isOpen: false
     }
-  }
-
-  componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), 1500);
   }
 
   toggleOpen = () => {
@@ -23,7 +18,6 @@ export default class MidpointMarker extends React.Component {
   render(){
     return(
       <div>
-        {this.state.loading ? <div className="loader-container"><div className="loader"></div></div> : null }
         <Marker position={{ lat: this.props.search.midpoint.latitude, lng: this.props.search.midpoint.longitude }}
         onClick={this.toggleOpen}>
           {this.state.isOpen &&
