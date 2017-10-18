@@ -39,7 +39,7 @@ class AutoCompleteInput extends React.Component {
         inputLoading: false
       })
       this.props.handleAddresses(key, data.address)
-  })
+    })
   }
 
   render() {
