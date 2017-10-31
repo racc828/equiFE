@@ -18,7 +18,7 @@ export default class MapsMarker extends React.Component {
   render(){
     return(
       <div>
-        <Marker position={{ lat: this.props.venue.geometry.location.lat, lng: this.props.venue.geometry.location.lng }} onClick={this.toggleOpen}
+        <Marker position={{ lat: this.props.venue.coordinates.latitude, lng: this.props.venue.coordinates.longitude }} onClick={this.toggleOpen}
         icon={{
           url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
         }}
@@ -26,9 +26,8 @@ export default class MapsMarker extends React.Component {
           {this.state.isOpen &&
           <InfoWindow onCloseClick={this.toggleOpen}>
             <div>
-              <p><span>Name: </span>  {this.props.venue.name} </p>
-              <p><span>Address: </span> {this.props.venue.vicinity}</p>
-              <p> {this.props.venue.opening_hours.open_now ? <span className="green">Open Now</span> : <span className="red">Closed</span> } </p>
+              <p><span>Name: </span>  <a href={this.props.venue.url} target="_blank">{this.props.venue.name}</a> </p>
+              <p> {this.props.venue.is_closed ? <span className="red">Closed</span> : <span className="green">Open Now</span> } </p>
               <p> <span>Rating:</span> {this.props.venue.rating} </p>
             </div>
           </InfoWindow>}

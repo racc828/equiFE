@@ -25,8 +25,10 @@ export default class UserHome extends React.Component {
   getVenues = () => {
     VenuesAdapter.getVenues(this.state.search.midpoint)
     .then(data => {
-      let sortedVenues = data.results.sort(this.compareRatings)
+  
+      let sortedVenues = data.businesses.sort(this.compareRatings)
       let firstFiveVenues = sortedVenues.slice(0, 5)
+      debugger
       sortedVenues.length > 5 ?
         this.setState({
           venues: firstFiveVenues
