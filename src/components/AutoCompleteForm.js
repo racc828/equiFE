@@ -34,7 +34,7 @@ class AutoCompleteForm extends React.Component {
         <p className="text-grey">Enter two or three addresses to find the optimal meeting spot!</p>
         <form onSubmit={this.handleFormSubmit} className="left">
           {["address1", "address2", "address3"].map((address, i) => {
-            return <AutoCompleteInput key={i} address={address} handleAddresses={this.handleAddresses} />
+            return <AutoCompleteInput handleFormSubmit={this.handleFormSubmit} key={i} address={address} handleAddresses={this.handleAddresses} />
           })}
           {this.props.invalidSearch ? <div className="text-red-container"><small className="text-red">Invalid Search, please search again</small></div> : null }
           <button type="submit">Get Midpoint!</button>

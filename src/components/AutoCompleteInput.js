@@ -19,6 +19,14 @@ class AutoCompleteInput extends React.Component {
     })
   }
 
+  // This submits form on enter because AutoComplete prevents that
+  checkEnter = (e) => {
+    let autoCompleteDropdown = document.getElementById("PlacesAutocomplete__autocomplete-container")
+    if(e.keyCode == 13 && autoCompleteDropdown == null) {
+      this.props.handleFormSubmit(e)
+    }
+  }
+
   getLocation = () => {
     this.setState({inputLoading:true})
     if (navigator.geolocation) {
@@ -46,7 +54,8 @@ class AutoCompleteInput extends React.Component {
     const inputProps = {
       value:this.state.address,
       onChange: this.handleChange,
-      placeholder: "Enter a location"
+      placeholder: "Enter a location",
+      onKeyDown: this.checkEnter
     }
 
     return (
