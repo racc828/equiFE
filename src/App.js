@@ -199,7 +199,7 @@ class App extends Component {
           <div>
               <NavBar dropdown={this.state.dropdown} dropdownOpen={this.dropdownOpen} reloadUserHome={this.reloadUserHome} currentUser={this.state.currentUser}
               logOut={this.logOut} />
-              {this.state.currentUser ? <Route exact path="/" render={this.renderUserHome}/> : <Route exact path="/" render={this.renderHome}/> }
+              {this.state.currentUser.error ? <Route exact path="/" render={this.renderHome}/> : <Route exact path="/" render={this.renderUserHome}/> }
               <Route exact path="/login" render={this.renderLogin}/>
               <Route exact path="/signup" render={this.renderSignUp}/>
               <Route exact path="/searchpage" render={this.renderSearchPage}/>
