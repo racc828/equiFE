@@ -24,6 +24,7 @@ export default class Home extends React.Component {
     .then(data => {
       let sortedVenues = data.businesses.sort(this.compareRatings)
       let firstFiveVenues = sortedVenues.slice(0, 5)
+      debugger
       sortedVenues.length > 5 ?
         this.setState({
           venues: firstFiveVenues
@@ -39,15 +40,25 @@ export default class Home extends React.Component {
     })
   }
 
-  compareRatings = (a, b) => {
-      let venueA = a.rating
-      let venueB = b.rating
-      let comparison = 0
-      if (venueA > venueB) {
-        comparison = 1
-      }
-      return comparison
+  // compareRatings = (a, b) => {
+  //     let venueA = a.rating
+  //     let venueB = b.rating
+  //     let comparison = 0
+  //     if (venueA >= venueB) {
+  //       comparison = 1
+  //     }
+  //     return comparison
+  //   }
+
+  compareRating = (a, b) => {
+    if (a.rating < b.rating) {
+      return -1
+    }else if (a.rating > b.rating) {
+      return 1
+    } else {
+      return 0
     }
+  }
 
     makeSearch = (search) => {
       this.setState({

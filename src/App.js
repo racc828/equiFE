@@ -31,7 +31,8 @@ class App extends Component {
       error:false,
       userExists: false,
       dropdown: false,
-      editUserExists: false
+      editUserExists: false,
+      loggingOut: false
     }
   }
 
@@ -115,7 +116,10 @@ class App extends Component {
 
   logOut = () => {
     localStorage.token = ""
-    this.setState({currentUser:{}, dropdown:false})
+    this.setState({
+      currentUser:{},
+      dropdown:false
+    })
     this.context.router.history.push("/")
   }
 
@@ -195,7 +199,7 @@ class App extends Component {
           <div>
               <NavBar dropdown={this.state.dropdown} dropdownOpen={this.dropdownOpen} reloadUserHome={this.reloadUserHome} currentUser={this.state.currentUser}
               logOut={this.logOut} />
-              <Route exact path="/" render={this.renderHome}/>
+              {this.state.currentUser ? <Route exact path="/" render={this.renderUserHome}/> : <Route exact path="/" render={this.renderHome}/> }
               <Route exact path="/login" render={this.renderLogin}/>
               <Route exact path="/signup" render={this.renderSignUp}/>
               <Route exact path="/searchpage" render={this.renderSearchPage}/>

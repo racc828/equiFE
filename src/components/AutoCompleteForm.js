@@ -26,6 +26,7 @@ class AutoCompleteForm extends React.Component {
     this.props.makeSearch(search)
   }
 
+
   render() {
     return (
       <div>

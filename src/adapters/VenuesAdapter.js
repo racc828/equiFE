@@ -1,7 +1,7 @@
 export default class VenuesAdapter {
   static getVenues(midpoint){
     let proxyUrl = 'https://cors-anywhere.herokuapp.com/'
-    let targetUrl = `https://api.yelp.com/v3/businesses/search?term=restaurant&latitude=` + `${midpoint.latitude}` + `&` + `longitude=` + `${midpoint.longitude}`
+    let targetUrl = `https://api.yelp.com/v3/businesses/search?sort=1&term=restaurant&latitude=` + `${midpoint.latitude}` + `&` + `longitude=` + `${midpoint.longitude}`
     return fetch(proxyUrl + targetUrl, {
       method: 'GET',
       headers: {
