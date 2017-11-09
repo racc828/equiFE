@@ -69,6 +69,32 @@ button:hover {
   padding-top:20px;
 }
 
+.tab {
+  display:inline-block;
+  width:50%;
+  margin-top:10px;
+}
+
+.tab .non-active {
+  border-bottom:1px solid #2bbbad;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.tab .active {
+  border-top:1px solid #2bbbad;
+  border-left:1px solid #2bbbad;
+  border-right:1px solid #2bbbad;
+  border-bottom-left-radius:0;
+  border-bottom-right-radius:0;
+}
+
+.tab button {
+  width:100%;
+  background:transparent;
+  box-shadow:none;
+  color:#2bbbad;
+}
 
 .navbar a {
   color:#fff;

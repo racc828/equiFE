@@ -18,7 +18,8 @@ export default class UserHome extends React.Component {
       initiateSearch: false,
       venues: [],
       invalidSearch: false,
-      loading: false
+      loading: false,
+      mapActive:true
       }
   }
 
@@ -82,6 +83,8 @@ export default class UserHome extends React.Component {
     })
   }
 
+  mapActive = () => this.setState({mapActive: !this.state.mapActive})
+
   initiateSearch = () => this.setState({initiateSearch: !this.state.initiateSearch})
 
   render() {
@@ -95,18 +98,55 @@ export default class UserHome extends React.Component {
                 <div>
                   <h1 className="text-primary left">Here's Your Midpoint!</h1>
                   <a className="more-midpoints-link" onClick={this.resetSearch}>Get More Midpoints</a>
-                  <VenuesInfo venues={this.state.venues} currentUser={this.props.currentUser}  />
-                  <div className="map-container">
-                    <Map
-                    googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFRY5wL6-C7xoiMksdLkTUWySSlIBDVvI&v=3.exp&libraries=geometry,drawing,places"
-                    loadingElement={<div style={{ height: `100%` }} />}
-                    containerElement={<div style={{ height: `400px` }} />}
-                    mapElement={<div style={{ height: `100%` }} />}
-                    search={this.state.search}
-                    venues={this.state.venues}
-                    isMarkerShown
-                    />
+
+                  {this.state.mapActive ?
+                  <div>
+
+                    <div className="tabs-container">
+                      <div className="tab">
+                        <button className="map-tab active" disabled>
+                          Map
+                        </button>
+                      </div>
+                      <div className="tab">
+                        <button className="list-tab non-active" onClick={this.mapActive}>
+                          List
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="map-container">
+                      <Map
+                      googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFRY5wL6-C7xoiMksdLkTUWySSlIBDVvI&v=3.exp&libraries=geometry,drawing,places"
+                      loadingElement={<div style={{ height: `100%` }} />}
+                      containerElement={<div style={{ height: `400px` }} />}
+                      mapElement={<div style={{ height: `100%` }} />}
+                      search={this.state.search}
+                      venues={this.state.venues}
+                      isMarkerShown
+                      />
+                    </div>
                   </div>
+                  :
+                  <div>
+                    <div className="tabs-container">
+                      <div className="tab">
+                        <button className="map-tab non-active" onClick={this.mapActive}>
+                          Map
+                        </button>
+                      </div>
+                      <div className="tab">
+                        <button className="list-tab active" disabled>
+                          List
+                        </button>
+                      </div>
+                    </div>
+                    <div>
+                      <VenuesInfo venues={this.state.venues} currentUser={this.props.currentUser}  />
+                    </div>
+                  </div>
+                 }
+
                </div> :
                <AutoCompleteForm invalidSearch={this.state.invalidSearch} makeSearch={this.makeSearch}  />   }
             </div>
