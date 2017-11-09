@@ -6,14 +6,16 @@ export default class SavedVenue extends React.Component {
 
 
   deleteVenue = () => {
-    debugger
     this.props.deleteVenue(this.props.venue.id)
   }
 
   render(){
+    debugger
     return(
       <div className="venueInfo">
-        <p>{this.props.venue.name} <i onClick={this.deleteVenue} className="fa fa-trash text-primary"></i></p>
+        <p>
+          <a href={this.props.venue.url} target="_blank">{this.props.venue.name}</a> 
+          : <span>{this.props.venue.street}, {this.props.venue.city}</span> <i onClick={this.deleteVenue} className="fa fa-trash text-primary"></i></p>
       </div>
     )
   }

@@ -13,12 +13,16 @@ export default class VenuesAdapter {
   }
 
   static saveVenue(venue, userId) {
+    debugger
     return fetch('http://localhost:3000/api/v1/venues',{
       method: 'POST',
       headers: headers(),
       body: JSON.stringify({
         name: venue.name,
-        vicinity: venue.vicinity,
+        url: venue.url,
+        street: venue.location.display_address[0],
+        city: venue.location.display_address[1],
+        rating: venue.rating,
         user_id: userId
       })
     })
