@@ -123,6 +123,7 @@ export default class Home extends React.Component {
                   </div>
 
                   <div className="map-container">
+                    <h3 className="left"><strong>Nearby Venues</strong></h3>
                     <Map
                     googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFRY5wL6-C7xoiMksdLkTUWySSlIBDVvI&v=3.exp&libraries=geometry,drawing,places"
                     loadingElement={<div style={{ height: `100%` }} />}

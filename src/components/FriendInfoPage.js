@@ -9,7 +9,6 @@ const FriendInfoPage = (props) => {
         return (
           <div>
             <p key={i}><a href={venue.url}>{venue.name}</a>: <span>{venue.street}, {venue.city}</span></p>
-
           </div>
         )
       })}
