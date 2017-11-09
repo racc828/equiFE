@@ -26,15 +26,14 @@ export default class UserHome extends React.Component {
   getVenues = () => {
     VenuesAdapter.getVenues(this.state.search.midpoint)
     .then(data => {
-      let sortedVenues = data.businesses.sort(this.compareRatings)
-      let firstFiveVenues = sortedVenues.slice(0, 5)
-      debugger
-      sortedVenues.length > 5 ?
+      let returned_venues = data.businesses
+      let topFiveVenues = data.businesses.slice(0,5)
+      data.businesses.length > 5 ?
         this.setState({
-          venues: firstFiveVenues
+          venues: topFiveVenues
         }) :
         this.setState({
-          venues: sortedVenues
+          venues: returned_venues
         })
     })
     .then(() => {
@@ -43,16 +42,6 @@ export default class UserHome extends React.Component {
       })
     })
   }
-
-  compareRatings = (a, b) => {
-      let venueA = a.rating
-      let venueB = b.rating
-      let comparison = 0
-      if (venueA > venueB) {
-        comparison = 1
-      }
-      return comparison
-    }
 
   makeSearch = (search) => {
     this.setState({

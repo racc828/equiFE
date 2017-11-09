@@ -1,7 +1,9 @@
 export default class VenuesAdapter {
   static getVenues(midpoint){
     let proxyUrl = 'https://cors-anywhere.herokuapp.com/'
-    let targetUrl = `https://api.yelp.com/v3/businesses/search?sort=1&term=restaurant&latitude=` + `${midpoint.latitude}` + `&` + `longitude=` + `${midpoint.longitude}`
+    // Search radius starts out at 402 meters (~0.25 miles), though we should have it widen as needed (like what Sarah did)
+    //https://www.yelp.com/developers/documentation/v3/business_search
+    let targetUrl = `https://api.yelp.com/v3/businesses/search?sort_by=rating&radius=402&term=restaurant&latitude=` + `${midpoint.latitude}` + `&` + `longitude=` + `${midpoint.longitude}`
     return fetch(proxyUrl + targetUrl, {
       method: 'GET',
       headers: {
@@ -13,7 +15,6 @@ export default class VenuesAdapter {
   }
 
   static saveVenue(venue, userId) {
-    debugger
     return fetch('http://localhost:3000/api/v1/venues',{
       method: 'POST',
       headers: headers(),
@@ -38,7 +39,6 @@ export default class VenuesAdapter {
   }
 
   static deleteVenue(venue) {
-    debugger
     return fetch(`http://localhost:3000/api/v1/venues/${venue}`,{
       method: 'DELETE',
       headers: headers(),
