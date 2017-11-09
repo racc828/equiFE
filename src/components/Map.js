@@ -9,7 +9,7 @@ import MidpointMarker from './MidpointMarker'
 const Map = withGoogleMap(props =>
 
   <GoogleMap
-    defaultZoom={10}
+    defaultZoom={11}
     defaultCenter={{ lat: props.search.midpoint.latitude, lng: props.search.midpoint.longitude }}
   >
     {props.isMarkerShown &&

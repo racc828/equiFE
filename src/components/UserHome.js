@@ -25,7 +25,6 @@ export default class UserHome extends React.Component {
   getVenues = () => {
     VenuesAdapter.getVenues(this.state.search.midpoint)
     .then(data => {
-  
       let sortedVenues = data.businesses.sort(this.compareRatings)
       let firstFiveVenues = sortedVenues.slice(0, 5)
       debugger
@@ -96,7 +95,6 @@ export default class UserHome extends React.Component {
                 <div>
                   <h1 className="text-primary left">Here's Your Midpoint!</h1>
                   <a className="more-midpoints-link" onClick={this.resetSearch}>Get More Midpoints</a>
-                  <p><span><img className="map-marker" src="https://maps.google.com/mapfiles/ms/icons/red-dot.png"/></span>{this.state.search.midpointAddress}</p>
                   <VenuesInfo venues={this.state.venues} currentUser={this.props.currentUser}  />
                   <div className="map-container">
                     <Map
