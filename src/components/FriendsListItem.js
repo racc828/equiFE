@@ -18,7 +18,7 @@ export default class FriendsList extends React.Component {
     return(
       <div>
         <div className="list-container">
-        <p>{this.props.friend.username} </p>
+        <p>{this.props.friend.fullname} </p>
         {
           this.props.followedFriends.length > 0 && this.props.followedFriends.find(friend => friend.id === this.props.friend.id) ? <div><button onClick={this.unFollow} className="float-right unfollow-user">UnFollow</button></div> : <div><button onClick={this.followUser} className="float-right follow-user">Follow</button></div>
         }
