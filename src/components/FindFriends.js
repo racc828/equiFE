@@ -25,6 +25,7 @@ export default class FindFriends extends React.Component {
   }
 
   findFriends = (friend) => {
+    debugger
     UsersAdapter.findFriends(friend)
     .then(matchedFriends => {
       if (matchedFriends.length === 0) {

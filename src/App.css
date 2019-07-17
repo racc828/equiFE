@@ -59,7 +59,7 @@ button:hover {
 }
 
 .input-loading {
-  background: url("http://www.hsi.com.hk/HSI-Net/pages/images/en/share/ajax-loader.gif") no-repeat left center!important;
+  background: url("805.gif") no-repeat left center!important;
   height:32px;
 }
 
@@ -73,6 +73,12 @@ button:hover {
   display:inline-block;
   width:50%;
   margin-top:10px;
+}
+
+/* Info window */
+
+.gm-style-iw button {
+  box-shadow:none;
 }
 
 .tab .non-active {

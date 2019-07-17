@@ -29,8 +29,9 @@ export default class MapsMarker extends React.Component {
               <img src={this.props.venue.image_url} width={150}></img>
               <p><span></span>  <a href={this.props.venue.url} target="_blank">{this.props.venue.name}</a> </p>
               <p> {this.props.venue.is_closed ? <span className="red">Closed</span> : <span className="green">Open Now</span> } </p>
-              <p> <span>Rating:</span> {this.props.venue.rating} </p>
+              <p> <span>Rating:</span> {this.props.venue.rating} ({this.props.venue.review_count}) </p>
               <p> <span>Price:</span> {this.props.venue.price} </p>
+              <p><span>Phone:</span> {this.props.venue.phone}</p>
 
             </div>
           </InfoWindow>}
