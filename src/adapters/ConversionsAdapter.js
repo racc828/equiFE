@@ -4,7 +4,7 @@ export default class ConversionsAdapter {
   static makeConversion(latitude, longitude){
     return fetch(`${path}/create_conversion`, {
       method: 'POST',
-      headers: headers(),s
+      headers: headers(),
       body: JSON.stringify({
         latitude: latitude,
         longitude: longitude
