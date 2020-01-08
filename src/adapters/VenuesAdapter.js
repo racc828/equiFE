@@ -1,3 +1,5 @@
+const path = 'https://equidestined-be.herokuapp.com/api/V1/venues'
+
 export default class VenuesAdapter {
   static getVenues(midpoint){
     let proxyUrl = 'https://cors-anywhere.herokuapp.com/'
@@ -15,7 +17,7 @@ export default class VenuesAdapter {
   }
 
   static saveVenue(venue, userId) {
-    return fetch('http://localhost:3000/api/v1/venues',{
+    return fetch(path,{
       method: 'POST',
       headers: headers(),
       body: JSON.stringify({
@@ -31,7 +33,7 @@ export default class VenuesAdapter {
   }
 
   static getSavedVenues() {
-    return fetch('http://localhost:3000/api/v1/venues',{
+    return fetch(path,{
       method: 'GET',
       headers: headers()
     })
@@ -39,7 +41,7 @@ export default class VenuesAdapter {
   }
 
   static deleteVenue(venue) {
-    return fetch(`http://localhost:3000/api/v1/venues/${venue}`,{
+    return fetch(`${path}/${venue}`,{
       method: 'DELETE',
       headers: headers(),
       body: JSON.stringify({

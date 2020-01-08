@@ -1,10 +1,10 @@
-const path = 'http://localhost:3000/api/v1/conversions/create_conversion'
+const path = 'https://equidestined-be.herokuapp.com/api/V1/conversions'
 export default class ConversionsAdapter {
 
   static makeConversion(latitude, longitude){
-    return fetch('http://localhost:3000/api/v1/conversions/create_conversion', {
+    return fetch(`${path}/create_conversion`, {
       method: 'POST',
-      headers: headers(),
+      headers: headers(),s
       body: JSON.stringify({
         latitude: latitude,
         longitude: longitude

@@ -1,4 +1,4 @@
-const path = 'http://localhost:3000/api/v1/searches'
+const path = 'https://equidestined-be.herokuapp.com/api/V1/searches'
 export default class SearchesAdapter {
 
   static makeSearch(addresses) {
@@ -11,7 +11,7 @@ export default class SearchesAdapter {
   }
 
   static getUserSearches() {
-    return fetch('http://localhost:3000/api/v1/searches/get_user_searches', {
+    return fetch(`${path}/get_user_searches`, {
       method: 'POST',
       headers:headers()
     })

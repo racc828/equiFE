@@ -1,4 +1,4 @@
-const path = 'http://localhost:3000/api/v1/users'
+const path = 'https://equidestined-be.herokuapp.com/api/V1/users'
 
 export default class UsersAdapter {
 
@@ -27,7 +27,7 @@ export default class UsersAdapter {
   }
 
   static editUser(edits) {
-    return fetch(`http://localhost:3000/api/v1/users/${edits.id}`, {
+    return fetch(`${path}/${edits.id}`, {
       method: 'PATCH',
       headers:headers(),
       body: JSON.stringify({
@@ -42,7 +42,7 @@ export default class UsersAdapter {
   }
 
   static findFriends(friend) {
-    return fetch('http://localhost:3000/api/v1/users/find_friends', {
+    return fetch('${path}/find_friends', {
       method: 'POST',
       headers: headers(),
       body: JSON.stringify({
