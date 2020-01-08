@@ -1,8 +1,8 @@
-const path = 'https://equidestined-be.herokuapp.com/api/v1/follows'
+const path = 'http://localhost:3000/api/v1/follows'
 export default class FollowersAdapter {
 
   static followUser(user) {
-    return fetch('https://equidestined-be.herokuapp.com/api/v1/follows/follow_user',{
+    return fetch('http://localhost:3000/api/v1/follows/follow_user',{
       method: 'POST',
       headers: headers(),
       body: JSON.stringify({
@@ -13,7 +13,7 @@ export default class FollowersAdapter {
   }
 
   static unFollowFriend(friend){
-    return fetch('https://equidestined-be.herokuapp.com/api/v1/follows/unfollow_friend',{
+    return fetch('http://localhost:3000/api/v1/follows/unfollow_friend',{
       method: 'POST',
       headers: headers(),
       body: JSON.stringify({
@@ -24,7 +24,7 @@ export default class FollowersAdapter {
   }
 
   static myFriends() {
-    return fetch('https://equidestined-be.herokuapp.com/api/v1/follows/my_friends',{
+    return fetch('http://localhost:3000/api/v1/follows/my_friends',{
       method: 'POST',
       headers: headers()
     })
@@ -32,7 +32,7 @@ export default class FollowersAdapter {
   }
 
   static setFriendInfo(friend) {
-    return fetch('https://equidestined-be.herokuapp.com/api/v1/follows/get_friend_info',{
+    return fetch('http://localhost:3000/api/v1/follows/get_friend_info',{
       method: 'POST',
       headers: headers(),
       body: JSON.stringify({

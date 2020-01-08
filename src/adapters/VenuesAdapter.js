@@ -15,7 +15,7 @@ export default class VenuesAdapter {
   }
 
   static saveVenue(venue, userId) {
-    return fetch('https://equidestined-be.herokuapp.com/api/v1/venues',{
+    return fetch('http://localhost:3000/api/v1/venues',{
       method: 'POST',
       headers: headers(),
       body: JSON.stringify({
@@ -31,7 +31,7 @@ export default class VenuesAdapter {
   }
 
   static getSavedVenues() {
-    return fetch('https://equidestined-be.herokuapp.com/api/v1/venues',{
+    return fetch('http://localhost:3000/api/v1/venues',{
       method: 'GET',
       headers: headers()
     })
@@ -39,7 +39,7 @@ export default class VenuesAdapter {
   }
 
   static deleteVenue(venue) {
-    return fetch(`https://equidestined-be.herokuapp.com/api/v1/venues/${venue}`,{
+    return fetch(`http://localhost:3000/api/v1/venues/${venue}`,{
       method: 'DELETE',
       headers: headers(),
       body: JSON.stringify({
